@@ -1,3 +1,0 @@
-[submodule "src/fast_lio_localization_sc_qn/third_party/small_gicp"]
-	path = src/fast_lio_localization_sc_qn/third_party/small_gicp
-	url = https://github.com/koide3/small_gicp.git

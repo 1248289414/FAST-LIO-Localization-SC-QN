@@ -17,15 +17,13 @@ else(OPENMP_FOUND)
   message("ERROR: OpenMP could not be found.")
 endif(OPENMP_FOUND)
 
-add_subdirectory(third_party/small_gicp)
-
 # find dependencies
 find_package(ament_cmake_auto REQUIRED)
 ament_auto_find_build_dependencies()
 
 find_package(PCL REQUIRED)
 find_package(Eigen3 REQUIRED)
-find_package(small_gicp REQUIRED)
+
 if(PCL_FOUND)
   message(WARNING "PCL_VER: ${PCL_VERSION}, and PCL_DIR: ${PCL_INCLUDE_DIRS}")
 endif()
@@ -42,7 +40,6 @@ target_include_directories(scancontext PUBLIC
 ament_auto_add_executable(fast_lio_localization_sc_qn_node src/fast_lio_localization_sc_qn_node.cpp src/fast_lio_localization_sc_qn.cpp)
 target_include_directories(fast_lio_localization_sc_qn_node PUBLIC
   third_party
-  ${small_gicp_INCLUDE_DIRS}
   ${PCL_INCLUDE_DIRS}
   ${EIGEN3_INCLUDE_DIR}
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -51,7 +48,6 @@ target_compile_features(fast_lio_localization_sc_qn_node PUBLIC c_std_99 cxx_std
 target_link_libraries(fast_lio_localization_sc_qn_node
   ${OpenMP_LIBS}
   ${PCL_LIBRARIES}
-  small_gicp::small_gicp
   Eigen3::Eigen
   scancontext
 )

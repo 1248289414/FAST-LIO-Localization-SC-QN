@@ -36,7 +36,7 @@
 // #include <nano_gicp/point_type_nano_gicp.hpp>
 // #include <nano_gicp/nano_gicp.hpp>
 ///// Small_GICP
-#include <small_gicp/pcl/pcl_registration.hpp>
+#include "small_gicp/pcl/pcl_registration.hpp"
 ///// Quatro
 #include <quatro/quatro_module.h>
 ///// ScanContext
